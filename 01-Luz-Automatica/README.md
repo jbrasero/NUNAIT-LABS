@@ -144,10 +144,25 @@ Este proyecto está diseñado para utilizar exactamente:
 - 1 × Resistencia de 1 kΩ, 1/4 W
 - 1 × Resistencia de 2 kΩ, 1/4 W
 - 1 × Protoboard de 400 puntos
-- Cables Dupont macho-macho
+- Cables Dupont macho-macho de 20 cm
+- Cables Dupont macho-hembra de 20 cm
+- Cables Dupont hembra-hembra de 20 cm
+
+(opcionales, pero recomendables para futuras modificaciones y proyectos)
+
 - 1 × Cable USB de datos compatible con el ESP32
 
-Usar otros modelos puede requerir cambiar conexiones o archivos de la carcasa.
+importante: intenta utilizar exactamente estos modelos. El código, las conexiones y las carcasas de NUNAIT LABS estarán diseñados para estos componentes.
+
+
+Para la parte de la carcasa:
+- Cartón de 2–3 mm
+- Regla
+- Lápiz
+- Pegamento
+- Tijeras o cúter con supervisión adulta
+
+Opcional: impresora 3D.
 
 ---
 

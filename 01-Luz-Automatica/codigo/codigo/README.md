@@ -1,200 +1,51 @@
 # Código — Proyecto 01
 
-Este es el código del proyecto **Luz Automática Inteligente** de NUNAIT LABS.
+Aquí encontrarás el código del proyecto **Luz Automática Inteligente**.
 
-El archivo que debes abrir es:
+Archivo principal:
 
 `luz_automatica.ino`
 
 ---
 
-## ¿Qué hace este programa?
+## Antes de usarlo
 
-El programa hace cuatro cosas:
+Lee primero el capítulo correspondiente del libro **NUNAIT LABS — Construye. Programa. Inventa.**
 
-1. Le pide al sensor HC-SR04 que mida una distancia.
-2. Calcula a cuántos centímetros está el objeto.
-3. Comprueba si está a menos de 30 cm.
-4. Enciende o apaga el LED.
+En el libro se explica:
 
-La idea es muy sencilla:
+- qué hace el programa;
+- qué significa cada parte;
+- qué son los GPIO;
+- cómo funciona el sensor;
+- cómo toma decisiones el ESP32.
 
-**MEDIR → DECIDIR → ACTUAR**
-
----
-
-# 1. Los pines
-
-Al principio del código aparece:
-
-```cpp
-#define TRIG_PIN 5
-#define ECHO_PIN 18
-#define LED_PIN 23
-```
-
-Esto le dice al ESP32 qué conexión usamos para cada cosa.
-
-- `TRIG_PIN 5` → el sensor envía la señal desde GPIO 5
-- `ECHO_PIN 18` → el ESP32 recibe el eco por GPIO 18
-- `LED_PIN 23` → el LED está conectado a GPIO 23
+Aquí encontrarás principalmente los archivos necesarios para poner el proyecto en marcha.
 
 ---
 
-# 2. Las variables
+## Cómo usar el código
 
-Después aparece:
-
-```cpp
-long duracion;
-float distancia;
-```
-
-Estas dos variables sirven para guardar información.
-
-`duracion` guarda cuánto tarda el sonido en ir y volver.
-
-`distancia` guarda el resultado convertido a centímetros.
+1. Descarga `luz_automatica.ino`.
+2. Ábrelo con Arduino IDE.
+3. Conecta el ESP32 al ordenador.
+4. Selecciona la placa correspondiente.
+5. Selecciona el puerto.
+6. Pulsa **Subir / Upload**.
+7. Espera a que termine la carga.
+8. Abre el Monitor Serie a `115200 baud`.
 
 ---
 
-# 3. La función setup()
+## Cambiar la distancia de activación
 
-```cpp
-void setup()
-```
-
-Esta parte se ejecuta una sola vez cuando encendemos el ESP32.
-
-Aquí indicamos qué pines van a enviar señales y cuáles van a recibirlas.
-
-```cpp
-pinMode(TRIG_PIN, OUTPUT);
-```
-
-Significa que TRIG va a enviar una señal.
-
-```cpp
-pinMode(ECHO_PIN, INPUT);
-```
-
-Significa que ECHO va a recibir información.
-
-```cpp
-pinMode(LED_PIN, OUTPUT);
-```
-
-Significa que el ESP32 podrá encender o apagar el LED.
-
----
-
-# 4. El Monitor Serie
-
-```cpp
-Serial.begin(115200);
-```
-
-Esto permite que el ESP32 envíe información al ordenador.
-
-Cuando abras el Monitor Serie en Arduino IDE podrás ver la distancia que está midiendo.
-
-Debes seleccionar:
-
-`115200 baud`
-
----
-
-# 5. Cómo mide el sensor
-
-El HC-SR04 necesita un pulso muy corto.
-
-Primero apagamos TRIG:
-
-```cpp
-digitalWrite(TRIG_PIN, LOW);
-```
-
-Después lo encendemos durante 10 microsegundos:
-
-```cpp
-digitalWrite(TRIG_PIN, HIGH);
-delayMicroseconds(10);
-digitalWrite(TRIG_PIN, LOW);
-```
-
-Eso hace que el sensor envíe una señal ultrasónica.
-
----
-
-# 6. Cómo medimos el eco
-
-Esta línea:
-
-```cpp
-duracion = pulseIn(ECHO_PIN, HIGH, 30000);
-```
-
-mide cuánto tiempo tarda en volver la señal.
-
-Ese tiempo se guarda en la variable `duracion`.
-
----
-
-# 7. Cómo calculamos la distancia
-
-Después usamos:
-
-```cpp
-distancia = duracion * 0.0343 / 2;
-```
-
-El sonido viaja aproximadamente a 0,0343 cm por microsegundo.
-
-Dividimos entre 2 porque la señal hace dos viajes:
-
-**sensor → objeto → sensor**
-
----
-
-# 8. Cómo se enciende el LED
-
-La parte más importante es esta:
-
-```cpp
-if (distancia > 0 && distancia < 30)
-```
-
-Significa:
-
-**SI la distancia es válida Y es menor de 30 centímetros...**
-
-Entonces:
-
-```cpp
-digitalWrite(LED_PIN, HIGH);
-```
-
-encendemos el LED.
-
-Si no:
-
-```cpp
-digitalWrite(LED_PIN, LOW);
-```
-
-lo apagamos.
-
----
-
-# 9. Cómo cambiar la distancia
-
-Si quieres que el LED se encienda a otra distancia, busca:
+Busca esta parte:
 
 ```cpp
 distancia < 30
 ```
 
-Puedes cambiar `30` por otro número.
+El número `30` significa 30 centímetros.
 
 Por ejemplo:
 
@@ -202,37 +53,38 @@ Por ejemplo:
 distancia < 15
 ```
 
-hará que el LED se encienda solo cuando algo esté a menos de 15 cm.
-
-O:
-
-```cpp
-distancia < 50
-```
-
-hará que se encienda antes.
+hará que el LED se encienda cuando algo esté a menos de 15 cm.
 
 ---
 
-# 10. Si no funciona
+## Si no funciona
 
 Comprueba:
 
-- que el código se ha cargado correctamente;
-- que has seleccionado la placa ESP32 correcta;
-- que has seleccionado el puerto correcto;
-- que el Monitor Serie está a 115200;
-- que TRIG está en GPIO 5;
-- que ECHO está en GPIO 18;
-- que el LED está en GPIO 23;
-- que el LED está colocado en el sentido correcto.
+- que el código se ha cargado sin errores;
+- que la placa correcta está seleccionada;
+- que el puerto correcto está seleccionado;
+- que TRIG está conectado a GPIO 5;
+- que ECHO está conectado a GPIO 18;
+- que el LED está conectado a GPIO 23;
+- que las conexiones coinciden con el esquema del proyecto.
+
+Consulta también la sección **NUNAIT DEBUG MODE** del libro.
+
+---
+
+## Código
+
+El archivo completo está aquí:
+
+`luz_automatica.ino`
+
+No necesitas copiarlo desde ninguna página.
+
+Descárgalo y ábrelo directamente con Arduino IDE.
 
 ---
 
 # NUNAIT LABS
 
-No necesitas memorizar todo el código.
-
-Lo importante es empezar a entender qué hace cada parte.
-
-Más adelante podrás cambiarlo y crear tu propia versión.
+**Construye. Programa. Inventa.**

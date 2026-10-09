@@ -2,17 +2,6 @@
 
 Aquí encontrarás todo lo necesario para construir la carcasa de la Luz Automática Inteligente con cartón.
 
-## Archivos
-
-- `plantilla-carton.pdf`
-  Plantilla imprimible al 100 %.
-
-- `medidas-carton.png`
-  Imagen con las medidas exactas de cada pieza.
-
-- `montaje-carton.png`
-  Guía visual para montar la carcasa paso a paso.
-
 ## Material necesario
 
 - Cartón de 2–3 mm

@@ -2,7 +2,7 @@
 
 Aquí encontrarás los esquemas de conexión del proyecto **Luz Automática Inteligente**.
 
-## Archivos
+## Archivo
 
 - `esquema-conexiones.png`  
   Vista general del montaje completo.

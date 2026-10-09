@@ -1,16 +1,39 @@
-# Carcasa de cartón
+# Carcasa de cartón — Proyecto 01
 
-No necesitas una impresora 3D para terminar este proyecto.
-
-En esta carpeta encontrarás una plantilla para fabricar la carcasa utilizando cartón.
+Aquí encontrarás todo lo necesario para construir la carcasa de la Luz Automática Inteligente con cartón.
 
 ## Archivos
 
-- plantilla-carton.pdf
-- medidas-carton.pdf
+- `plantilla-carton.pdf`
+  Plantilla imprimible al 100 %.
 
-La plantilla estará diseñada para imprimirse al 100 % de escala.
+- `medidas-carton.png`
+  Imagen con las medidas exactas de cada pieza.
 
-Antes de cortar, comprueba las medidas indicadas en el documento.
+- `montaje-carton.png`
+  Guía visual para montar la carcasa paso a paso.
 
-Para utilizar cúter u otras herramientas de corte, pide ayuda a un adulto.
+## Material necesario
+
+- Cartón de 2–3 mm
+- Regla
+- Lápiz
+- Tijeras o cúter
+- Pegamento o cinta
+- Impresora normal
+
+## Cómo usar la plantilla
+
+1. Descarga `plantilla-carton.pdf`.
+2. Imprime al 100 % de escala.
+3. Comprueba la medida de referencia que aparecerá en la hoja.
+4. Recorta las piezas.
+5. Colócalas sobre el cartón.
+6. Marca y corta.
+7. Sigue `montaje-carton.png`.
+
+## Importante
+
+Las medidas están pensadas para los componentes exactos del Proyecto 01.
+
+Si utilizas otro modelo de ESP32 o sensor, la carcasa puede no encajar.
